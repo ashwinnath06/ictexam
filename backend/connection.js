@@ -13,11 +13,15 @@ const connectDB = async () => {
         console.log('✅ MongoDB Connected successfully.');
     } catch (err) {
         console.error('❌ MongoDB Connection Error:', err.message);
-        if (err.message.includes('IP not whitelisted') || err.message.includes('ECONNRESET')) {
-            console.error('TIP: This often means your IP is not whitelisted in MongoDB Atlas or there is a network restriction.');
+        
+        if (err.message.includes('authentication failed')) {
+            console.error('TIP: Your MongoDB username or password in .env might be incorrect.');
+        } else if (err.message.includes('IP not whitelisted') || err.message.includes('ECONNRESET')) {
+            console.error('TIP: This often means your IP is not whitelisted in MongoDB Atlas.');
         } else if (err.message.includes('querySrv')) {
-            console.error('TIP: This is a DNS issue. The server is trying to resolve the MongoDB SRV record.');
+            console.error('TIP: This is a DNS issue. Try changing your DNS to 8.8.8.8.');
         }
+        
         process.exit(1);
     }
 };

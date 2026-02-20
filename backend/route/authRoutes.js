@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../model/User');
+const User = require('../model/user');
 
 // @route    POST api/auth/register
 // @desc     Register user
@@ -14,6 +14,7 @@ router.post('/register', async (req, res) => {
         let user = await User.findOne({ email });
 
         if (user) {
+            console.log(`Registration attempt failed: User with email ${email} already exists.`);
             return res.status(400).json({ msg: 'User already exists' });
         }
 
