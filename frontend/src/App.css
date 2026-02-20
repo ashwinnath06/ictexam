@@ -1,0 +1,125 @@
+/* Global styles for the app */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(-45deg, #4f46e5, #ec4899, #6366f1, #9333ea);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#root {
+  width: 100%;
+}
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Floating circles for background depth */
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.5;
+  animation: float 20s infinite alternate;
+}
+
+.bg-circle-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(99, 102, 241, 0.6);
+  top: -10%;
+  left: -5%;
+}
+
+.bg-circle-2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(236, 72, 153, 0.4);
+  bottom: -10%;
+  right: -5%;
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(100px, 100px) scale(1.2);
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.glass-card:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-5px);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Premium Button Gradient */
+.premium-btn {
+  background: linear-gradient(45deg, #6366f1 30%, #ec4899 90%) !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+}
+
+.premium-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6) !important;
+}
